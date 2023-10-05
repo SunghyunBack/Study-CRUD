@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+ul{
+    list-style:none;
+}
+form{
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.box{
+    width: 40rem;
+    height: auto;
+display: flex;
+flex-direction: column;
+}
+.box > .title-box{
+    text-align: center;
+    width: 40rem;
+    height: 1.5rem;
+    display: block;
+}
+.box > .item{
+    display: flex;
+    justify-content: end;
+    width: 40rem;
+}
+
+.box > .item> .time{
+    margin-right: 0.8rem;
+}
+.box > .item > .modify{
+    margin-right: 0.8rem;
+}
+.box > .item >.delete{
+
+}
+
+.box > .content{
+    margin-top: 0.8rem;
+    border: 1px solid black;
+    height: 30rem;
+    display: block;
+}
+.box > .content>p>img{
+    width: 10rem;
+    height: 10rem;
+}
+.box > .back{
+    width: 40rem;
+    text-align: end;
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bsh.studycrudrestapi.mapper.MainMapper">
+
+
+    <select id="selectAll"
+            resultType="com.bsh.studycrudrestapi.entities.WriteEntity">
+        SELECT `index` AS `index`,
+        `title` AS `title`,
+        `category`AS`category`,
+        `content` AS `content`,
+        `created_at`AS `createdAt`,
+        `views`AS`views`
+        FROM `bulletin`.`articles`
+        WHERE `index`=#{index}
+        ORDER BY `index` DESC
+    </select>
+
+
+    <select id="selectCount"
+            resultType="int">
+        SELECT COUNT(*) AS `count`
+        FROM `bulletin`.`articles`
+        WHERE `title` LIKE CONCAT ('%',#{searchQuery},'%')
+        AND `category` LIKE CONCAT('%', #{category}, '%')
+    </select>
+
+    <select id="selectByPage"
+            resultType="com.bsh.studycrudrestapi.entities.WriteEntity">
+        SELECT `index` AS `index`,
+        `title` AS `title`,
+        `category`AS`category`,
+        `content` AS `content`,
+        `created_at`AS `createdAt`,
+        `views`AS`views`
+        FROM `bulletin`.`articles`
+        WHERE `title` LIKE CONCAT ('%',#{searchQuery},'%')
+        AND `category` LIKE CONCAT('%', #{category}, '%')
+        ORDER BY `index` DESC
+        LIMIT #{pagingModel.pageCount} OFFSET #{pagingModel.offset}
+    </select>
+
+
+
+</mapper>

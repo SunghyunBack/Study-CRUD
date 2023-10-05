@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${article.getTitle()}">Document</title>
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/bulletin.css}">
+    <script defer th:src="@{/resources/scripts/bulletin.js}"></script>
+
+
+</head>
+<body th:if="${article != null}">
+<form id="bulletinForm">
+    <div class="box">
+        <div class="title-box" th:text="${article.getTitle()}">제목</div>
+        <div class="item">
+            <span class="time" th:text="${#dates.format(article.getCreatedAt(), 'yyyy-MM-dd')}">시간</span>
+            <button class="modify" rel="patch" th:data-index="${article.getIndex()}">수정</button>
+            <button class="delete" rel="delete" th:data-index="${article.getIndex()}">삭제</button>
+        </div>
+        <div class="content" th:utext="${article.getContent()}">내용</div>
+        <div>
+            <tr>
+                <th th:text="${'첨부파일 : '}"></th>
+                <td colspan="3" th:if="${attachments == null || attachments.length == 1}">
+                    첨부파일이 없습니다.
+                </td>
+                <td colspan="3" th:if="${attachments != null || attachments.length > 1}">
+                    <ul><!-- a태그를 활용한 첨부파일 다운로드  -->
+                        <li th:each="attachment : ${attachments}">
+                            <a target="_blank" th:text="${attachment.getFileName()}" th:href="@{/main/download (index=${attachment.getIndex()})}"></a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </div>
+        <div class="back">
+            <a href="/main">main 화면으로 가기</a>
+            <a href="javascript:history.back();">url 기록에 의한 뒤로가기</a>
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bsh.studycrudrestapi.mapper.BulletinMapper">
+
+    <select id="selectArticleIndex"
+            resultType="com.bsh.studycrudrestapi.entities.WriteEntity">
+        SELECT `index` AS `index`,
+        `title` AS `title`,
+        `content` AS `content`,
+        `created_at`AS `createdAt`,
+        `views`+1 AS `views`
+        FROM `bulletin`.`articles`
+        WHERE `index` = #{index}
+        ORDER BY `index`
+    </select>
+
+    <select id="selectAttachmentsByArticleIndexNoData"
+            resultType="com.bsh.studycrudrestapi.entities.AttachmentEntity">
+        SELECT `index` AS `index`,
+        `article_index` AS `articleIndex`,
+        `file_name` AS `fileName`,
+        `file_size` AS `fileSize`,
+        `file_content_type` AS `fileContentType`,
+        `file_data` AS `fileData`
+        FROM `bulletin`.`attachments`
+        WHERE `article_index`= #{articleIndex}
+        ORDER BY `index`
+    </select>
+
+    <select id="selectAttachment"
+            resultType="com.bsh.studycrudrestapi.entities.AttachmentEntity">
+        SELECT `index` AS `index`,
+        `article_index` AS `articleIndex`,
+        `file_name` AS `fileName`,
+        `file_size` AS `fileSize`,
+        `file_content_type` AS `fileContentType`,
+        `file_data` AS `fileData`
+        FROM `bulletin`.`attachments`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </select>
+
+    <delete id="deleteArticle">
+        DELETE
+        FROM `bulletin`.`articles`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </delete>
+
+    <select id="selectArticleByPatchIndex"
+            resultType="com.bsh.studycrudrestapi.entities.WriteEntity">
+        SELECT `index` AS `index`,
+        `title` AS `title`,
+        `content` AS `content`,
+        `created_at`AS `createdAt`
+        FROM `bulletin`.`articles`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </select>
+
+    <update id="updateArticleByIndex"
+    parameterType="com.bsh.studycrudrestapi.entities.WriteEntity">
+        UPDATE `bulletin`.`articles`
+        SET `title`=#{title},
+            `category`=#{category},
+            `content`=#{content},
+            `created_at`=#{createdAt},
+            `views`=#{views}
+        WHERE `index` = #{index}
+    </update>
+
+    <update id="updateView"
+            parameterType="com.bsh.studycrudrestapi.entities.WriteEntity">
+        UPDATE `bulletin`.`articles`
+        SET `views`= `views`+1
+        WHERE `index`=#{index}
+    </update>
+
+
+</mapper>

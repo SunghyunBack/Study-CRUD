@@ -1,0 +1,155 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    list-style: none;
+
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    border: 1px solid #e0e0e0;
+    width: 70rem;
+    height: 40rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.box > .title-box {
+    width: 100%;
+    height: 5rem;
+    align-items: center;
+    display: flex;
+    border: 1px solid #e0e0e0;
+
+}
+
+.box > .main-box {
+    width: 100%;
+    height: 35rem;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #e0e0e0;
+
+}
+
+.box > .main-box > .category-box {
+    width: 10rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+
+}
+
+
+.box > .main-box > .list-box {
+    width: 60rem;
+    height: 100%;
+    border: 1px solid #e0e0e0;
+}
+
+.box > .main-box > .list-box > .write {
+    width: 100%;
+
+    display: inline-block;
+}
+
+.box > .main-box > .list-box > .write > a {
+    width: 4rem;
+    height: 1.5rem;
+    float: right;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.box > .main-box > .list-box > .list {
+    width: 100%;
+    height: 30rem;
+}
+
+.box > .main-box > .list-box > .list > .list-title {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.box > .main-box > .list-box > .list > .list-title > *{
+    text-align: center;
+}
+.box > .main-box > .list-box > .list > .list-title > .num{
+    width: 5rem;
+}
+.box > .main-box > .list-box > .list > .list-title> .title{
+    width: 30rem;
+}
+.box > .main-box > .list-box > .list > .list-title > .time{
+    width: 5rem;
+}
+.box > .main-box > .list-box > .list > .list-title > .views{
+    width: 5rem;
+}
+.box > .main-box > .list-box > .paging {
+    height: 3.5rem;
+}
+
+
+
+.box > .main-box > .list-box > .list >ul{
+    height: auto;
+}
+.box > .main-box > .list-box > .list >ul > .list-title {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.box > .main-box > .list-box > .list >ul> .list-title > *{
+    text-align: center;
+}
+.box > .main-box > .list-box > .list >ul> .list-title > .num{
+    width: 5rem;
+}
+.box > .main-box > .list-box > .list >ul> .list-title> .title{
+    width: 30rem;
+}
+.box > .main-box > .list-box > .list>ul > .list-title > .time{
+    width: 7rem;
+}
+.box > .main-box > .list-box > .list >ul> .list-title > .views{
+    width: 5rem;
+}
+.box > .main-box > .list-box>.search{
+    width: 100%;
+    text-align: center;
+}
+.box > .main-box > .list-box>.search > ul{
+
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.box > .main-box > .list-box>.search  > ul > *{
+    margin-right: 0.5rem;
+}

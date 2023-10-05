@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/write.css}">
+    <script th:src="@{/resources/libraries/ckeditor/ckeditor.js}"></script>
+    <script defer th:src="@{/resources/scripts/write.js}"></script>
+</head>
+<body>
+<form id="writeForm" method="post" enctype="multipart/form-data">
+    <div class="title"><h1>공유할 이야기를 적어주세요</h1></div>
+    <div class="content-box">
+        <div class="content content-title">
+            <span class="left">제목</span>
+            <input class="input" type="text" name="title" placeholder="제목을 입력해 주세요">
+            <select name="category" class="category">
+                <option value="" >주제</option>
+                <option value="음악">음악</option>
+                <option value="영화">영화</option>
+                <option value="패션">패션</option>
+                <option value="만화">만화</option>
+            </select>
+        </div>
+        <div class="content content-content">
+            <textarea name="content"></textarea>
+        </div>
+        <div class="content content-files">
+            <span class="left">첨부파일</span>
+            <input class="files" multiple name="files" type="file">
+        </div>
+        <div class="button">
+            <span class="write"><input type="submit" value="작성"></span>
+            <span class="cancel"><a href="/main">취소</a></span>
+        </div>
+    </div>
+</form>
+</body>
+</html>

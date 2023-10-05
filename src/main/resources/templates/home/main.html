@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../resources/stylesheets/main.css">
+    <title>Document</title>
+
+
+</head>
+<body>
+<form class="box">
+    <div class="title-box">
+        <h1>다양한 글을 작성해 주세요!</h1>
+    </div>
+    <div class="main-box">
+        <div class="category-box">
+            <ul>
+                <li><a th:href="@{'/main' (p=1,category='')}">전체</a></li>
+                <li><a th:href="@{'/main' (p=1,category='음악')}">음악</a></li>
+                <li><a th:href="@{'/main' (p=1,category='영화')}">영화</a></li>
+                <li><a th:href="@{'/main' (p=1,category='패션')}">패션</a></li>
+                <li><a th:href="@{'/main' (p=1,category='만화')}">만화</a></li>
+            </ul>
+        </div>
+        <div class="list-box">
+            <div class="write">
+                <a href="/main/write">write</a>
+            </div>
+            <div class="list">
+                <div class="list-title">
+                    <span class="num">번호</span>
+                    <span class="title">제목</span>
+                    <span class="time">시간</span>
+                    <span class="views">조회수</span>
+                </div>
+                <ul th:each="category:${category}">
+                    <li class="list-title" th:each="write:${writes}">
+                        <span class="num" th:text="${write.getIndex()}"></span>
+                        <span class="title"><a th:href="@{./main/bulletin(index=${write.getIndex()})}" th:text="${write.getTitle()}"></a></span>
+                        <span class="time" th:text="${#dates.format(write.getCreatedAt(), 'yyyy-MM-dd')}"></span>
+                        <span class="views" th:text="${write.getViews()}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="search">
+                <ul class="paging">
+                    <li th:each="page:${#numbers.sequence(pagingModel.displayStartPage, pagingModel.displayEndPage)}">
+                        <a th:href="@{'./main' (p = ${page}, q = ${searchQuery})}" th:text="${page}"></a>
+                    </li>
+                </ul>
+                <label class="label">
+                    <input class="input" maxlength="10" name="q" placeholder="검색" type="text">
+                </label>
+                <input class="button" type="submit" value="검색">
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
