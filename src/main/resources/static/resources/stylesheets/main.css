@@ -153,3 +153,36 @@ body {
 .box > .main-box > .list-box>.search  > ul > *{
     margin-right: 0.5rem;
 }
+
+.pop-up{
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+.pop-up > .pop-up-box{
+    width: 300px;
+    height: 300px;
+}
+.pop-up > .pop-up-box>.pop-up-content{
+    width: 300px;
+    height: 280px;
+    background-color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.pop-up > .pop-up-box > .pop-up-option{
+    width: 300px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.pop-up > .pop-up-box > .pop-up-option > .talk{
+    color: rgb(128, 128, 128);
+}
+.pop-up > .pop-up-box > .pop-up-option > .close{
+    cursor: pointer;
+    color: black;
+}
